@@ -1,11 +1,8 @@
 {
-	"folders": [
-		{
-			"path": ".."
-		},
-		{
-			"path": "../../Projects/Hall of Pole 13.12.23/Scrapper per Site"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "settings": {}
 }
