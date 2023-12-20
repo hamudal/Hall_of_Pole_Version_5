@@ -38,11 +38,14 @@ def process_urls(urls):
             print(f"Scrape Klassen Daten von {url}...")
             classes_data = scrape_classes([url])
             results['classes_data'] = classes_data
+
             if 'URL_SCL_E' in classes_data.columns:
-                url_scl_e = classes_data['URL_SCL_E'].tolist()[0]
-                print(f"Scrape Klassen Details von {url_scl_e}...")
-                classes_details = scrape_workshop_details(url_scl_e)
-                results['classes_details'] = classes_details
+                print(f"Scrape Klassen Details von URLs in 'URL_SCL_E'...")
+                classes_details_list = []
+                for url_scl_e in classes_data['URL_SCL_E'].tolist():
+                    classes_detail = scrape_workshop_details(url_scl_e)
+                    classes_details_list.append(classes_detail)
+                results['classes_details'] = pd.concat(classes_details_list, ignore_index=True)
     
     print("Verarbeitung abgeschlossen.")
     return results
