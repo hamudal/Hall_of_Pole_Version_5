@@ -102,7 +102,7 @@ def extract_image_urls(soup):
     pictures = soup.find_all("div", class_="MuiBox-root css-1fivxf")
     return [img["src"] for div in pictures if (img := div.find("img")) and img.has_attr("src")]
 
-# Verwenden der Hauptfunktion
-url = "https://www.eversports.de/s/poda-studio"
-pole_studio_df = scrape_pole_studio(url)
-print(pole_studio_df)
+# # Verwenden der Hauptfunktion
+# url = "https://www.eversports.de/s/poda-studio"
+# pole_studio_df = scrape_pole_studio(url)
+# print(pole_studio_df)

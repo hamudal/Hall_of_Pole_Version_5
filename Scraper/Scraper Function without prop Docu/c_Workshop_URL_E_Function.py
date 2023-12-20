@@ -38,7 +38,7 @@ def scrape_workshop_details(url):
         'Location': [location],
         'Category': [level],
         'Date': [date],
-        'URL_SW': url,
+        'URL_E': url,
         'Time': time
     })
 

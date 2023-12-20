@@ -25,7 +25,7 @@ def scrape_classes(urls):
             room = room_element.find_next('div', class_='ellipsis').find_next('div', class_='ellipsis').text.strip() if room_element else "0"
 
             workshop_info = {
-                'URL_SCL': urljoin(base_url, session_short_id),
+                'URL_SCL_E': urljoin(base_url, session_short_id),
                 'Time': session_time.split(" ● ")[0],
                 'Duration': session_time.split(" ● ")[1],
                 'Name': session_name,
