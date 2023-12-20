@@ -34,3 +34,8 @@ def reconstruct_urls_and_extract_buttons(url):
 # url = "https://www.eversports.de/s/poda-studio"
 # link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
 # print(link_text, reconstructed_urls)
+
+
+
+
+### FIX reconstructed_url = f"https://www.eversports.de/{button_url_mapping[text]}/poda-studio"
