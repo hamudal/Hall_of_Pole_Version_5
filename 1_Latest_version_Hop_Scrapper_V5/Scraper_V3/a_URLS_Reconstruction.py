@@ -54,6 +54,6 @@ def reconstruct_urls_and_extract_buttons(url):
     return link_text, reconstructed_urls
 
 # Beispielaufruf der Funktion
-url = "https://www.eversports.de/s/poda-studio"
-link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
-print(link_text, reconstructed_urls)
+# url = "https://www.eversports.de/s/poda-studio"
+# link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
+# print(link_text, reconstructed_urls)

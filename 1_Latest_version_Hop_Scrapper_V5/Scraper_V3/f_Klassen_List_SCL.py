@@ -48,6 +48,6 @@ def scrape_classes(urls):
     return klassenlist_df
 
 # Beispielaufruf der Funktion
-urls = ["https://www.eversports.de/scl/poda-studio"]
-klassenlist_df = scrape_classes(urls)
-print(klassenlist_df)
+# urls = ["https://www.eversports.de/scl/poda-studio"]
+# klassenlist_df = scrape_classes(urls)
+# print(klassenlist_df)

@@ -46,6 +46,6 @@ def validate_urls(url_list):
     return valid_urls_df
 
 # Beispielaufruf der Funktion
-url_list = ["https://www.eversports.de/s/poda-studio"]
-valid_urls_df = validate_urls(url_list)
-print(valid_urls_df)
+# url_list = ["https://www.eversports.de/s/poda-studio"]
+# valid_urls_df = validate_urls(url_list)
+# print(valid_urls_df)

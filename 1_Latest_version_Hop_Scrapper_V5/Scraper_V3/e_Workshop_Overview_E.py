@@ -51,6 +51,6 @@ def scrape_workshop_details(url):
     return workshop_df
 
 # Beispielaufruf der Funktion
-url = "https://www.eversports.de/e/workshop/mT-MZa2"
-workshop_df = scrape_workshop_details(url)
-print(workshop_df)
+# url = "https://www.eversports.de/e/workshop/mT-MZa2"
+# workshop_df = scrape_workshop_details(url)
+# print(workshop_df)

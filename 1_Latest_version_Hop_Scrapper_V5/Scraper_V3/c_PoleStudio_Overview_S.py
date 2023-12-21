@@ -136,6 +136,6 @@ def scrape_pole_studio(url):
     return pole_studio_df
 
 # Beispielaufruf der Hauptfunktion
-url = "https://www.eversports.de/s/poda-studio"
-pole_studio_df = scrape_pole_studio(url)
-print(pole_studio_df)
+# url = "https://www.eversports.de/s/poda-studio"
+# pole_studio_df = scrape_pole_studio(url)
+# print(pole_studio_df)

@@ -87,6 +87,6 @@ def scrape_class_details(url):
     return class_df
 
 # Beispielaufruf der Funktion
-url = "https://www.eversports.de/e/class/mT-MZa2"
-class_df = scrape_class_details(url)
-print(class_df)
+# url = "https://www.eversports.de/e/class/mT-MZa2"
+# class_df = scrape_class_details(url)
+# print(class_df)
