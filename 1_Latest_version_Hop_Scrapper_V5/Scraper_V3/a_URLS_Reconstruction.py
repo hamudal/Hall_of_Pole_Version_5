@@ -28,15 +28,15 @@ def reconstruct_urls_and_extract_buttons(url):
     soup = BeautifulSoup(content, 'html.parser')
     overview_buttons = soup.find_all('div', class_="MuiStack-root css-sgccrm")
 
+    # Basis-URL-Mapping
     button_url_mapping = {
         'Übersicht': 's',
         'Klassen': 'scl',
         'Workshops': 'sw',
-        'Videos': 's/videos',
         'Preise': 'sp',
-        'Team': 's/team'
     }
 
+    # Extraktion des dynamischen Teils der URL
     dynamic_part = url.split("/")[-1]
     link_text = []
     reconstructed_urls = {}
@@ -47,13 +47,17 @@ def reconstruct_urls_and_extract_buttons(url):
             for anchor in anchor_elements:
                 text = anchor.text
                 link_text.append(text)
-                if text in button_url_mapping:
+                # Spezielle URL-Konstruktion für "Videos" und "Team"
+                if text in ['Videos', 'Team']:
+                    reconstructed_url = f"{url}/{text.lower()}"
+                elif text in button_url_mapping:
+                    # Standard URL-Konstruktion
                     reconstructed_url = f"https://www.eversports.de/{button_url_mapping[text]}/{dynamic_part}"
-                    reconstructed_urls[text] = reconstructed_url
+                reconstructed_urls[text] = reconstructed_url
 
     return link_text, reconstructed_urls
 
 # Beispielaufruf der Funktion
-# url = "https://www.eversports.de/s/poda-studio"
-# link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
-# print(link_text, reconstructed_urls)
+url = "https://www.eversports.de/s/poda-studio"
+link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
+print(link_text, reconstructed_urls)
