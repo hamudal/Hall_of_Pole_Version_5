@@ -47,9 +47,19 @@ def reconstruct_urls_and_extract_buttons(url):
             for anchor in anchor_elements:
                 text = anchor.text
                 link_text.append(text)
+<<<<<<< HEAD
                 if text in button_url_mapping:
                     reconstructed_url = f"https://www.eversports.de/{button_url_mapping[text]}/{dynamic_part}"
                     reconstructed_urls[text] = reconstructed_url
+=======
+                # Spezielle URL-Konstruktion für "Videos" und "Team"
+                if text in ['Videos', 'Team']:
+                    reconstructed_url = f"{url}/{text.lower()}"
+                elif text in button_url_mapping:
+                    # Standard URL-Konstruktion
+                    reconstructed_url = f"https://www.eversports.de/{button_url_mapping[text]}/{dynamic_part}"
+                reconstructed_urls[text] = reconstructed_url
+>>>>>>> 6c3fff599a4ab911539e4d3176d959ac28627a50
 
     return link_text, reconstructed_urls
 
