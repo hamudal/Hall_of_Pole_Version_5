@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-
 def get_response_content(url):
     """Holt den Inhalt einer Webseite über eine HTTP-Anfrage."""
     try:
@@ -11,7 +10,6 @@ def get_response_content(url):
     except requests.RequestException as e:
         print(f"Fehler bei der HTTP-Anfrage: {e}")
         return None
-
 
 def reconstruct_urls_and_extract_buttons(url):
     """
@@ -54,12 +52,10 @@ def reconstruct_urls_and_extract_buttons(url):
                     reconstructed_url = f"{url}/{text.lower()}"
                 elif text in button_url_mapping:
                     # Standard URL-Konstruktion
-                    reconstructed_url = f"https://www.eversports.de/{
-                        button_url_mapping[text]}/{dynamic_part}"
+                    reconstructed_url = f"https://www.eversports.de/{button_url_mapping[text]}/{dynamic_part}"
                 reconstructed_urls[text] = reconstructed_url
 
     return link_text, reconstructed_urls
-
 
 # Beispielaufruf der Funktion
 url = "https://www.eversports.de/s/poda-studio"
