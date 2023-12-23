@@ -51,7 +51,7 @@ def scrape_workshops(url):
 
     # DataFrame erstellen und URLs rekonstruieren
     workshoplist_df = pd.DataFrame(workshop_data)
-    workshoplist_df['URL_SW'] = BASE_URL + workshoplist_df['Workshop Href']
+    workshoplist_df['URL_E'] = BASE_URL + workshoplist_df['Workshop Href']
     workshoplist_df.drop(columns=['Workshop Href'], inplace=True)
 
     return workshoplist_df
