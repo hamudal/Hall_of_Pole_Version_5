@@ -14,12 +14,6 @@ def get_response_content(url):
 def reconstruct_urls_and_extract_buttons(url):
     """
     Rekonstruiert URLs und extrahiert Buttons für eine gegebene URL.
-
-    Args:
-        url (str): Die URL der zu scrapenden Seite.
-
-    Returns:
-        tuple: Eine Liste der Link-Texte und ein Dictionary der rekonstruierten URLs.
     """
     content = get_response_content(url)
     if content is None:
@@ -32,9 +26,9 @@ def reconstruct_urls_and_extract_buttons(url):
         'Übersicht': 's',
         'Klassen': 'scl',
         'Workshops': 'sw',
-        'Videos': 's',
+        'Videos': 's/videos',
         'Preise': 'sp',
-        'Team': 's'
+        'Team': 's/team'
     }
 
     dynamic_part = url.split("/")[-1]
@@ -47,10 +41,11 @@ def reconstruct_urls_and_extract_buttons(url):
             for anchor in anchor_elements:
                 text = anchor.text
                 link_text.append(text)
-                if text in ['Videos', 'Team']:
-                    reconstructed_url = f"{url}/{text.lower()}"
-                else:
+                if text in button_url_mapping:
                     reconstructed_url = f"https://www.eversports.de/{button_url_mapping[text]}/{dynamic_part}"
+                else:
+                    # Hier wird der Original-Text in der URL gespeichert, falls er nicht im Mapping ist
+                    reconstructed_url = f"{url}/{text.lower()}"
                 reconstructed_urls[text] = reconstructed_url
 
     return link_text, reconstructed_urls
