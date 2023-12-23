@@ -32,9 +32,9 @@ def reconstruct_urls_and_extract_buttons(url):
         'Übersicht': 's',
         'Klassen': 'scl',
         'Workshops': 'sw',
-        'Videos': 's/videos',
+        'Videos': 's',
         'Preise': 'sp',
-        'Team': 's/team'
+        'Team': 's'
     }
 
     dynamic_part = url.split("/")[-1]
@@ -47,13 +47,15 @@ def reconstruct_urls_and_extract_buttons(url):
             for anchor in anchor_elements:
                 text = anchor.text
                 link_text.append(text)
-                if text in button_url_mapping:
+                if text in ['Videos', 'Team']:
+                    reconstructed_url = f"{url}/{text.lower()}"
+                else:
                     reconstructed_url = f"https://www.eversports.de/{button_url_mapping[text]}/{dynamic_part}"
-                    reconstructed_urls[text] = reconstructed_url
+                reconstructed_urls[text] = reconstructed_url
 
     return link_text, reconstructed_urls
 
 # Beispielaufruf der Funktion
-url = "https://www.eversports.de/s/poda-studio"
-link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
-print(link_text, reconstructed_urls)
+# url = "https://www.eversports.de/s/poda-studio"
+# link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
+# print(link_text, reconstructed_urls)

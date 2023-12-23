@@ -31,14 +31,14 @@ def scrape_workshop_details(url):
     date = get_text_or_none(soup.find('p', class_='MuiTypography-root MuiTypography-body1 css-16ai5j1'))
     time = get_text_or_none(soup.find('p', class_='MuiTypography-root MuiTypography-body1 css-bjhn26'))
 
-    # Debugging: Überprüfen der extrahierten Daten
-    print(f"Workshop Name: {workshop_name}")
-    print(f"Beschreibung: {description}")
-    print(f"Studio Name: {studio_name}")
-    print(f"Location: {location}")
-    print(f"Category: {level}")
-    print(f"Date: {date}")
-    print(f"Time: {time}")
+    # # Debugging: Überprüfen der extrahierten Daten
+    # print(f"Workshop Name: {workshop_name}")
+    # print(f"Beschreibung: {description}")
+    # print(f"Studio Name: {studio_name}")
+    # print(f"Location: {location}")
+    # print(f"Category: {level}")
+    # print(f"Date: {date}")
+    # print(f"Time: {time}")
 
     # Erstellen des DataFrame
     workshop_df = pd.DataFrame({
