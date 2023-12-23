@@ -1,89 +1,93 @@
-# Hall_of_Pole_Version_5
-Scraper
+# Hall of Pole Project Overview
+
+## Introduction
+The Hall of Pole project aims to aggregate and process data from various sources related to Pole Dance Studios, primarily focusing on data extraction from web sources and management of this data for further analysis and display on the website. The project uses Python scripts for web scraping, data processing, and database management.
 
 
-# Projektbeschreibung: Entwicklung einer Datenbank für HallOfPole.com
+# Installation Guide for Hall of Pole Project
 
-## Einleitung
-Ich arbeite derzeit an einem spannenden Projekt, das darauf abzielt, eine umfangreiche Datenbank für die Website HallOfPole.com aufzubauen. Mein Ziel ist es, eine zuverlässige und reichhaltige Informationsquelle zu schaffen, die die Plattform mit wertvollen Daten über Pole Dance Studios, Workshops, Klassen und vieles mehr versorgt.
+## Prerequisites
+Before you begin, ensure you have Python installed on your system. This project is compatible with Python 3.6 and above.
 
-## Mein Fortschritt bis jetzt
-Bislang habe ich in diesem Projekt mehrere Schlüsselelemente erfolgreich entwickelt und implementiert:
+## Step-by-Step Installation
 
-- **URL-Rekonstruktion**: Ich habe eine Funktion namens `reconstruct_urls_and_extract_buttons` entwickelt, die spezifische URLs analysiert und nützliche Links extrahiert. Diese Funktion generiert ein Dictionary mit verschiedenen URL-Kategorien, die für das weitere Scraping von Bedeutung sind.
-
-- **Datenstrukturierung**: Ich konvertiere das erzeugte Dictionary in ein DataFrame, um eine effektive Organisation und Strukturierung der gesammelten Daten zu gewährleisten.
-
-- **URL-Validierung**: Mit der Funktion `validate_urls` stelle ich sicher, dass alle erfassten URLs gültig und zuverlässig sind. Dies ist ein entscheidender Schritt, um die Qualität der Daten zu gewährleisten.
-
-- **Datensammlung**: Ich habe spezifische Scraping-Funktionen entwickelt, um detaillierte Informationen über Pole Studios, Workshops und Klassen zu sammeln. Jeder Datensatz wird in einem separaten DataFrame gespeichert, um eine klare Trennung und einfache Verwaltung der Daten zu ermöglichen.
-
-- **Detailinformationen erfassen**: Für tiefergehende Einblicke sammle ich zusätzliche Detailinformationen zu Workshops und Klassen.
-
-## Zukünftige Pläne
-Meine nächsten Schritte umfassen:
-
-- **Cloud-Integration**: Die Anbindung unserer Datenpipeline an eine Cloud-Plattform steht bevor. Dies wird eine zentrale und skalierbare Datenverwaltung ermöglichen.
-
-- **Automatisierung**: Ich plane, einen automatisierten Prozess zu implementieren, der regelmäßige Datenupdates ohne manuellen Eingriff ermöglicht.
-
-- **Analyse und Berichterstellung**: Ich werde Analysetools entwickeln, um aus den gesammelten Daten wertvolle Erkenntnisse zu gewinnen und Berichte zu erstellen.
-
-- **Benutzeroberfläche entwickeln**: Ziel ist es, eine intuitive Benutzeroberfläche zu erstellen, über die Nutzer auf die Daten zugreifen und sie effektiv nutzen können.
-
-## Abschlussbemerkung
-Durch die Kombination meiner Fähigkeiten im Bereich der Datenerfassung und -verarbeitung mit fortschrittlichen Cloud-Technologien und Automatisierungsstrategien strebe ich danach, HallOfPole.com zu einer zentralen Ressource für die Pole Dance-Gemeinschaft zu machen. Ich bin motiviert, nicht nur eine Datenbank zu erstellen, sondern eine Plattform, die Vernetzung, Lernen und Entwicklung in dieser dynamischen Kunstform unterstützt.
+1. **Clone the Repository**
+   First, clone the repository to your local machine. Open your terminal and run:
+   ```bash
+   git clone https://github.com/hamudal/Hall_of_Pole_Version_5/tree/main/1_Latest_version_Hop_Scrapper_V5/Scraper_V3
+   cd Scraper_V3
 
 
+## Files Description
 
+### a_URLS_Reconstruction.py
+- **Purpose**: Extracts and reconstructs specific URLs from a given webpage.
+- **Details**: This script uses requests and BeautifulSoup to fetch the content of a webpage and parse HTML. It extracts elements based on specific CSS classes and reconstructs URLs for different sections of the site (e.g., Overview, Classes, Workshops, etc.).
 
-# Technische Dokumentation: HallOfPole.com Datenbeschaffung
+### b_URLS_Validation.py
+- **Purpose**: Validates a list of URLs to check their accessibility.
+- **Details**: Utilizes requests to send HTTP requests to URLs and verify their status. Incorporates logging to track the validation process, marking URLs as valid or invalid.
 
-## Einleitung
-Im Rahmen meines Projekts für HallOfPole.com habe ich eine Reihe von Python-Skripten entwickelt, um Daten von der Website Eversports effizient zu sammeln und zu verarbeiten. Ziel ist es, eine umfassende Datenbank zu erstellen, die wertvolle Informationen über Pole Dance Studios, Workshops und Klassen enthält.
+### c_PoleStudio_Overview_S.py
+- **Purpose**: Scrapes detailed information about Pole Studios from their webpages.
+- **Details**: Extracts various data points like studio name, contact information, description, ratings, etc., using requests and BeautifulSoup for HTML parsing.
 
-## Technische Details
+### d_Workshop_List_SW.py
+- **Purpose**: Gathers information about workshops offered by Pole Studios.
+- **Details**: Scrapes workshop-related data such as name, date, price, and studio information, compiling it into a structured format.
 
-### URL-Rekonstruktion
-- **Skript**: `a_URL_Reconstructor.py`
-- **Funktion**: `reconstruct_urls_and_extract_buttons`
-- **Prozess**: Die Funktion nimmt eine URL (z.B. `https://www.eversports.de/s/poda-studio`) auf und extrahiert verschiedene URL-Kategorien wie 'Übersicht', 'Klassen', 'Workshops' usw. Diese werden in einem Dictionary `reconstructed_urls` gespeichert.
+### e_Workshop_Overview_E.py
+- **Purpose**: Extracts detailed information about individual workshops.
+- **Details**: Similar to c_PoleStudio_Overview_S.py, but focuses on specific workshops, retrieving details like descriptions, levels, dates, and times.
 
-### Datenstrukturierung
-- **Prozess**: Das `reconstructed_urls` Dictionary wird in ein DataFrame `reconstructed_urls_df` umgewandelt, wobei jede Zeile ein Schlüssel-Wert-Paar (Kategorie und URL) darstellt.
+### f_Class_List_SCL.py
+- **Purpose**: Collects data about classes available in different Pole Studios.
+- **Details**: Processes multiple URLs to scrape class information, including time, duration, name, and availability.
 
-### URL-Validierung
-- **Skript**: `aa_URL_Validation.py`
-- **Funktion**: `validate_urls`
-- **Prozess**: Überprüft jede URL aus `reconstructed_urls_df["URL"]` auf Gültigkeit und gibt ein DataFrame `validated_urls_df` zurück, das nur gültige URLs enthält.
+### g_Klassen_Overview_E_SCL.py
+- **Purpose**: Provides detailed insights into specific classes offered.
+- **Details**: Extracts comprehensive details of individual classes, including descriptions, instructors, locations, and schedules.
 
-### Extraktion spezifischer URLs
-- **Prozess**: Spezifische URLs werden aus `validated_urls_df` extrahiert und in Variablen wie `url_s`, `url_scl`, `url_sw` und `url_sp` gespeichert.
+### PyCaller.py
+- **Purpose**: Central script to process URLs using the above modules.
+- **Details**: Orchestrates the execution of other scripts, managing the flow of data from one module to another, ensuring cohesive data processing.
 
-### Erstellung eines DataFrames für URL-Kategorien
-- **Prozess**: Erstellt ein neues DataFrame `url_categories_df`, wobei jede Spalte eine andere URL-Kategorie repräsentiert.
+### SQL_Connection.ipynb
+- **Purpose**: Manages database connections and operations.
+- **Details**: A Jupyter Notebook that outlines procedures for connecting to, querying, and managing a database storing the scraped data. It provides interactive elements for database operations.
 
-### Daten-Scraping-Prozesse
+### CSV_Collector.py
+- **Purpose**: Aggregates URLs from multiple CSV files.
+- **Details**: Searches through CSV files in a specified directory, extracting and combining URLs that match a given pattern. Ensures data consolidation for analysis.
 
-#### Pole Studio Scraping
-- **Skript**: `aaa_PoleStudio_URL_S_Function.py`
-- **Funktion**: `scrape_pole_studio`
-- **Prozess**: Scrapet Informationen von der URL für Pole Studios (`url_s`) und speichert diese in `pole_studio_data`.
+## Best Practices Followed
+- Modularity: Each script focuses on a single task, making the codebase more maintainable and scalable.
+- Error Handling: Robust error handling to manage exceptions and maintain process flow.
+- Code Readability: Clear naming conventions, consistent formatting, and detailed comments.
+- Logging: Comprehensive logging in b_URLS_Validation.py for tracking URL validation processes.
 
-#### Workshops List Scraping
-- **Skript**: `b_Workshopslist_URL_SW_Function.py`
-- **Funktion**: `scrape_workshops`
-- **Prozess**: Sammelt Informationen über Workshops von der URL `url_sw` und speichert diese in `workshops_data`.
+## Usage
+Each script can be run independently or orchestrated through PyCaller.py, depending on the required operation. Ensure that the Python environment has necessary dependencies installed (requests, pandas, BeautifulSoup, etc.).
 
-#### Workshop Details Scraping
-- **Skript**: `c_Workshop_URL_E_Function.py`
-- **Funktion**: `scrape_workshop_details`
-- **Prozess**: Extrahiert detaillierte Informationen über einen spezifischen Workshop von der ersten URL in `workshops_data['URL_SW']` und speichert diese in `workshop_details`.
+---
 
-#### Klassen List Scraping
-- **Skript**: `d_Klassenlist_SCL_Function.py`
-- **Funktion**: `scrape_classes`
-- **Prozess**: Scrapet Informationen über Klassen von einer Liste von URLs (`urls_list`, basierend auf `url_scl`) und speichert diese in `classes_data`.
+## Main Frame Overview
 
-#### Klassen Details Scraping
-- **Prozess**: Extrahiert die erste URL aus `classes_data['URL_SCL_E']` und verwendet `scrape_workshop_details`, um detaillierte Informationen zu einer Klasse zu erhalten.
+The Main Frame serves as the orchestrator for processing URLs and aggregating data from various sources. It's designed to systematically extract, organize, and display data related to Pole Dance Studios.
+
+### Functionality
+
+- **process_and_print_results**: This function processes a given URL and prints the results. It utilizes other scripts for data extraction, handling each URL individually.
+
+- **Data Aggregation**: After processing URLs, the script initializes several DataFrames to store different categories of data like Pole Studio, Workshop, Class details, etc.
+
+- **Looping Through URLs**: It iterates over a list of URLs (e.g., from a CSV file) and calls `process_and_print_results` for each URL. The gathered data is then added to respective DataFrames.
+
+- **Dataframes Initialization**: Separate DataFrames for Pole Studio Data, Workshop Data, Workshop Details, Class Data, and Class Details are initialized and populated with scraped data.
+
+- **Data Display**: Finally, it prints out the collected data for each category, providing a comprehensive overview.
+
+### Sample Output
+
+The Main Frame displays the aggregated data in an organized manner. Here's a glimpse of the output:
+
