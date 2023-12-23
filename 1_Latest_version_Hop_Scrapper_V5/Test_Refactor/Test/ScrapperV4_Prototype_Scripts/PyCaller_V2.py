@@ -39,10 +39,11 @@ async def process_urls(urls):
     results = await asyncio.gather(*tasks)
     return pd.concat(results, ignore_index=True)
 
-# def main():
+# async def main():
 #     try:
-#         initial_urls = ["https://www.eversports.de/s/poda-studio"]  # Beispiel-URLs
-#         combined_df = asyncio.run(process_urls(initial_urls))
+#         polestudios = pd.read_csv("validated_polestudios_V2.csv")
+#         initial_urls = polestudios["Eversports Pole Studio Seite"].tolist()
+#         combined_df = await process_urls(initial_urls)
 
 #         if not combined_df.empty:
 #             logging.info("Zusammengeführte Ergebnisse:")
@@ -53,4 +54,4 @@ async def process_urls(urls):
 #         logging.error(f"Ein Fehler ist im Hauptprogramm aufgetreten: {e}")
 
 # if __name__ == "__main__":
-#     main()
+#     asyncio.run(main())
