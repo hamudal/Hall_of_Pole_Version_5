@@ -1,8 +1,9 @@
 import requests
 import pandas as pd
 import logging
+from concurrent.futures import ThreadPoolExecutor
 
-# Einrichten des Loggings
+# Konfiguration des Logging-Systems
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def is_url_valid(url):
@@ -16,10 +17,10 @@ def is_url_valid(url):
         bool: True, wenn die URL gültig ist, sonst False.
     """
     try:
-        response = requests.get(url)
+        response = requests.head(url, allow_redirects=True)
         return response.status_code == 200
     except requests.exceptions.RequestException as e:
-        logging.error(f"Error while checking URL: {url}\nError: {e}")
+        logging.error(f"Fehler beim Überprüfen der URL {url}: {e}")
         return False
 
 def validate_urls(url_list):
@@ -32,20 +33,15 @@ def validate_urls(url_list):
     Returns:
         DataFrame: Ein Pandas DataFrame mit gültigen URLs.
     """
-    valid_urls = []
-    for index, url in enumerate(url_list):
-        logging.info(f"Processing URL {index + 1}/{len(url_list)}: {url}")
-        if is_url_valid(url):
-            valid_urls.append(url)
-            logging.info(f"URL {url} is valid.")
-        else:
-            logging.info(f"URL {url} is not valid.")
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        results = list(executor.map(is_url_valid, url_list))
 
+    valid_urls = [url for url, is_valid in zip(url_list, results) if is_valid]
     valid_urls_df = pd.DataFrame(valid_urls, columns=["Valid_URL"])
-    valid_urls_df = valid_urls_df.drop_duplicates(subset=['Valid_URL'])
     return valid_urls_df
 
 # Beispielaufruf der Funktion
-# url_list = ["https://www.eversports.de/s/poda-studio"]
-# valid_urls_df = validate_urls(url_list)
-# print(valid_urls_df)
+# if __name__ == "__main__":
+#     test_url_list = ["https://www.eversports.de/s/poda-studio", "https://invalid-url.com"]
+#     valid_urls_df = validate_urls(test_url_list)
+#     logging.info(f"Gültige URLs: \n{valid_urls_df}")
