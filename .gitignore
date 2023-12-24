@@ -158,26 +158,6 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
-Git New!.code-workspace
-Scraper/Scraper Script/Explo/Events (1).csv
-Scraper/Scraper Script/Explo/Events.csv
-Scraper/Scraper Script/Explo/Pole Studios (1).csv
-Scraper/Scraper Script/Explo/Pole Studios.csv
-Scraper/Scraper Script/Explo/Explo.ipynb
-Git New!.code-workspace
-Git New!.code-workspace
-SQL/SQL_Connection.ipynb
-SQL/SQL_Base_Script.ipynb
-Latest_version_Hop_Scrapper_V5/Explo/Events (1).csv
-Latest_version_Hop_Scrapper_V5/Explo/Events.csv
-Latest_version_Hop_Scrapper_V5/Explo/Explo.ipynb
-Latest_version_Hop_Scrapper_V5/Explo/Pole Studios (1).csv
-Latest_version_Hop_Scrapper_V5/Explo/Pole Studios.csv
-Skripts/3_Scraper_Skript/Explo/Events (1).csv
-Skripts/3_Scraper_Skript/Explo/Events.csv
-Skripts/3_Scraper_Skript/Explo/Explo.ipynb
-Skripts/3_Scraper_Skript/Explo/Pole Studios (1).csv
-Skripts/3_Scraper_Skript/Explo/Pole Studios.csv
 
 
 # Explo
