@@ -17,6 +17,8 @@ Before you begin, ensure you have Python installed on your system. This project 
    git clone https://github.com/hamudal/Hall_of_Pole_Version_5/tree/main/1_Latest_version_Hop_Scrapper_V5/Scraper_V3
    cd Scraper_V3
 
+   pip install -r requirements.txt
+
 
 ## Files Description
 
