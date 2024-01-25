@@ -22,7 +22,7 @@ def scrape_workshop_details(url):
         return element.text.strip() if element else None
 
     # Extraktion der verschiedenen Datenpunkte
-    workshop_name = get_text_or_none(soup.find('h1', class_='MuiTypography-root MuiTypography-h1 css-1bvkaia'))
+    workshop_name = get_text_or_none(soup.find('h1', class_='MuiTypography-root MuiTypography-h1 css-gdjtsh'))
     description_div = soup.find('div', class_='css-3awvdx')
     description = ' '.join([p.text for p in description_div.find_all('p')]) if description_div else None
     studio_name = get_text_or_none(soup.find('p', class_='MuiTypography-root MuiTypography-body1 css-z923os'))

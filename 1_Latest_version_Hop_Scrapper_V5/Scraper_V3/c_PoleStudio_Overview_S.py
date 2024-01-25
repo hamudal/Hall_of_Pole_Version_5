@@ -30,7 +30,7 @@ def extract_overview_buttons(soup):
     return [button.text for div in buttons for button in div.find_all('a')]
 
 def extract_pole_studio_name(soup):
-    name_element = soup.find('h1', class_='MuiTypography-root MuiTypography-h1 css-qinhw0')
+    name_element = soup.find('h1', class_='MuiTypography-root MuiTypography-h1 css-l64ylu')
     return name_element.text if name_element else None
 
 def extract_contact_info(soup):
