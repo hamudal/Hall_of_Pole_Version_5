@@ -47,7 +47,7 @@ def scrape_classes(urls):
     klassenlist_df = pd.DataFrame(sessions)
     return klassenlist_df
 
-# Beispielaufruf der Funktion
+## Beispielaufruf der Funktion
 # urls = ["https://www.eversports.de/scl/poda-studio"]
 # klassenlist_df = scrape_classes(urls)
 # print(klassenlist_df)
