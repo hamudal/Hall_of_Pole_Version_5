@@ -60,7 +60,7 @@ def reconstruct_urls_and_extract_buttons(url):
 
     return link_text, reconstructed_urls
 
-# Example call of the function
-url = "https://www.eversports.de/s/poda-studio"
-link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
-print(link_text, reconstructed_urls)
+# # Example call of the function
+# url = "https://www.eversports.de/s/poda-studio"
+# link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
+# print(link_text, reconstructed_urls)

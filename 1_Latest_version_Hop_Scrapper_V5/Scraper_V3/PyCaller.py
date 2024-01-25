@@ -29,6 +29,10 @@ def process_urls(urls):
     
     for url in validated_urls:
         if "/s/" in url:
+            # Skip URLs like "https://www.eversports.de/s/{PoleStudio}/team" and "https://www.eversports.de/s/{PoleStudio}/videos"
+            if "/team" in url or "/videos" in url:
+                continue
+            
             print(f"Scrape Pole Studio Daten von {url}...")
             pole_studio_data = scrape_pole_studio(url)
             results['pole_studio_data'] = pd.concat([results['pole_studio_data'], pole_studio_data], ignore_index=True)
