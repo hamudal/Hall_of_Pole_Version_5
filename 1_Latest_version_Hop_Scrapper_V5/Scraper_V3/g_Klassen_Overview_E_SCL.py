@@ -35,9 +35,6 @@ def scrape_workshop_details(url):
 
     # Weitere Extraktionen (Dauer, Trainer-Infos, Preis, etc.)
     # ...import requests
-from bs4 import BeautifulSoup
-import pandas as pd
-from datetime import datetime
 
 def scrape_class_details(url):
     """
