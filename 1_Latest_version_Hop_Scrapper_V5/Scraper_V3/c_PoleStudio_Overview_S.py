@@ -102,7 +102,7 @@ def scrape_pole_studio(url):
     contact_info = extract_contact_info(polestudio_soup)
     address, town, postal_code, street = extract_address(polestudio_soup)
     description_text = extract_description(polestudio_soup)
-    rating, num_reviews = extract_rating(polestudio_soup)
+    # rating, num_reviews = extract_rating(polestudio_soup)
     combined_items = extract_rating_factors(polestudio_soup)
     arten = extract_art(polestudio_soup)
     sale = extract_sale(polestudio_soup)
@@ -117,8 +117,8 @@ def scrape_pole_studio(url):
         'Straße': street,
         'Buttons': overviewbuttons,
         'Pole Studio Beschreibung': description_text,
-        'Ratingscore': rating,
-        'Reviewanzahl': num_reviews,
+        # 'Ratingscore': rating,
+        # 'Reviewanzahl': num_reviews,
         'Rating Faktoren': combined_items,
         'E-Mail': contact_info['E-Mail'],
         'Homepage': contact_info['Homepage'],
