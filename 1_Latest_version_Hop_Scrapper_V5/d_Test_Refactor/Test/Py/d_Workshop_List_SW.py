@@ -2,27 +2,29 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# Globale Konstante für die Basis-URL
+# Global constant for the base URL
 BASE_URL = "https://www.eversports.de"
 
 def scrape_workshops(url):
     """
-    Scraped Workshop-Informationen von einer gegebenen URL.
+    Scrapes workshop information from a given URL.
 
     Args:
-        url (str): Die URL der Workshop-Seite.
+        url (str): The URL of the workshop page.
 
     Returns:
-        DataFrame: Ein DataFrame mit Informationen zu den Workshops.
+        DataFrame: A DataFrame with information about the workshops.
     """
-    response = requests.get(url)
-    if response.status_code != 200:
-        print("Fehler beim Abrufen der Webseite")
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+    except requests.RequestException as e:
+        print(f"Error retrieving the webpage: {e}")
         return None
 
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    # Listen zur Speicherung der Workshop-Informationen
+    # Dictionary to store workshop information
     workshop_data = {
         'Workshop Name': [],
         'Workshop Date': [],
@@ -30,13 +32,13 @@ def scrape_workshops(url):
         'Workshop Units': [],
         'Workshop Studio': [],
         'Workshop Address': [],
-        'Workshop Href': []
+        'URL_E': []
     }
 
-    # Workshop-Elemente finden
+    # Workshop elements
     workshop_elements = soup.find_all('a', class_='marketplace-tile js_marketplace-tile')
 
-    # Durch die Elemente iterieren und Informationen extrahieren
+    # Iterate through elements and extract information
     for workshop in workshop_elements:
         workshop_data['Workshop Name'].append(workshop.find('h4').text)
         workshop_data['Workshop Date'].append(workshop.find('div', class_='marketplace-tile__date').text)
@@ -47,16 +49,14 @@ def scrape_workshops(url):
         workshop_data['Workshop Studio'].append(workshop_content[0].text)
         workshop_data['Workshop Address'].append(workshop_content[1].text)
         
-        workshop_data['Workshop Href'].append(workshop['href'])
+        workshop_data['URL_E'].append(BASE_URL + workshop['href'])
 
-    # DataFrame erstellen und URLs rekonstruieren
+    # Create DataFrame
     workshoplist_df = pd.DataFrame(workshop_data)
-    workshoplist_df['URL_E'] = BASE_URL + workshoplist_df['Workshop Href']
-    workshoplist_df.drop(columns=['Workshop Href'], inplace=True)
 
     return workshoplist_df
 
-# Beispielaufruf der Funktion
-url = "https://www.eversports.de/sw/poda-studio"
-df = scrape_workshops(url)
-print(df)
+# Example call of the function
+# url = "https://www.eversports.de/sw/poda-studio"
+# df = scrape_workshops(url)
+# df
