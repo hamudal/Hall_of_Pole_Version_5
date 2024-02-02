@@ -15,10 +15,8 @@ def process_urls(urls):
     Returns:
         dict: A dictionary containing DataFrames for different categories.
     """
-    validated_urls = []
-    validated_urls_df = []
 
-    try:
+    try:#to fix!!
         print("Starting URL reconstruction...")
         reconstructed_urls_list = [reconstruct_urls_and_extract_buttons(url)[1] for url in urls]
         reconstructed_urls = {k: v for d in reconstructed_urls_list for k, v in d.items()}
