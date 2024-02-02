@@ -58,16 +58,16 @@ def extract_description(soup):
     description_element = soup.find('div', class_="MuiBox-root css-0")
     return description_element.text if description_element else None
 
-def extract_rating(soup):
-    rating_element = soup.find('p', class_='MuiTypography-root MuiTypography-body1 css-2g7rhg')
-    if rating_element:
-        parts = rating_element.text.split('(')
-        return parts[0].strip(), parts[1].replace(')', '').strip()
-    return None, None
+# def extract_rating(soup):
+#     rating_element = soup.find('p', class_='MuiTypography-root MuiTypography-body1 css-2g7rhg')
+#     if rating_element:
+#         parts = rating_element.text.split('(')
+#         return parts[0].strip(), parts[1].replace(')', '').strip()
+#     return None, None
 
-def extract_rating_factors(soup):
-    items = soup.find_all('div', class_='MuiStack-root css-95g4uk')
-    return [f"{item.find('p', class_='MuiTypography-root MuiTypography-body1 css-1k55edk').text}: {item.find('p', class_='MuiTypography-root MuiTypography-body1 css-1y0caop').text}" for item in items if item.find('p', class_='MuiTypography-root MuiTypography-body1 css-1k55edk') and item.find('p', class_='MuiTypography-root MuiTypography-body1 css-1y0caop')]
+# def extract_rating_factors(soup):
+#     items = soup.find_all('div', class_='MuiStack-root css-95g4uk')
+#     return [f"{item.find('p', class_='MuiTypography-root MuiTypography-body1 css-1k55edk').text}: {item.find('p', class_='MuiTypography-root MuiTypography-body1 css-1y0caop').text}" for item in items if item.find('p', class_='MuiTypography-root MuiTypography-body1 css-1k55edk') and item.find('p', class_='MuiTypography-root MuiTypography-body1 css-1y0caop')]
 
 def extract_art(soup):
     art_elements = soup.find_all("p", class_="MuiTypography-root MuiTypography-body1 css-6ik050")
@@ -77,9 +77,9 @@ def extract_sale(soup):
     sale_element = soup.find("p", class_="MuiTypography-root MuiTypography-body1 css-153qxhx")
     return sale_element.text if sale_element else None
 
-def extract_image_urls(soup):
-    pictures = soup.find_all("div", class_="MuiBox-root css-1fivxf")
-    return [img["src"] for div in pictures if (img := div.find("img")) and img.has_attr("src")]
+# def extract_image_urls(soup):
+#     pictures = soup.find_all("div", class_="MuiBox-root css-1fivxf")
+#     return [img["src"] for div in pictures if (img := div.find("img")) and img.has_attr("src")]
 
 # Main function scrape_pole_studio
 def scrape_pole_studio(url):
@@ -103,10 +103,10 @@ def scrape_pole_studio(url):
     address, town, postal_code, street = extract_address(polestudio_soup)
     description_text = extract_description(polestudio_soup)
     # rating, num_reviews = extract_rating(polestudio_soup)
-    combined_items = extract_rating_factors(polestudio_soup)
+    # combined_items = extract_rating_factors(polestudio_soup)
     arten = extract_art(polestudio_soup)
     sale = extract_sale(polestudio_soup)
-    image_urls = extract_image_urls(polestudio_soup)
+    # image_urls = extract_image_urls(polestudio_soup)
 
     # Creating the dictionary and returning it as a DataFrame
     pole_studio_overview = {
@@ -117,16 +117,14 @@ def scrape_pole_studio(url):
         'Straße': street,
         'Buttons': overview_buttons,
         'Pole Studio Beschreibung': description_text,
-        # 'Ratingscore': rating,
-        # 'Reviewanzahl': num_reviews,
-        'Rating Faktoren': combined_items,
+        #'Rating Faktoren': combined_items,
         'E-Mail': contact_info['E-Mail'],
         'Homepage': contact_info['Homepage'],
         'Telefon': contact_info['Telefon'],
         'URL_S': url,
         'Art': arten,
         'Angebot': sale,
-        'Bildergalerie': image_urls
+        #'Bildergalerie': image_urls
     }
 
     pole_studio_df = pd.DataFrame([pole_studio_overview])

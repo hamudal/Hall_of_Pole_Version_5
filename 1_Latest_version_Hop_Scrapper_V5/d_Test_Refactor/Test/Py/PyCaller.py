@@ -15,6 +15,9 @@ def process_urls(urls):
     Returns:
         dict: A dictionary containing DataFrames for different categories.
     """
+    validated_urls = []
+    validated_urls_df = []
+
     try:
         print("Starting URL reconstruction...")
         reconstructed_urls_list = [reconstruct_urls_and_extract_buttons(url)[1] for url in urls]

@@ -86,7 +86,7 @@ def construct_url(base_url, button_text, mapping, dynamic_part):
     else:
         raise ValueError(f"Unrecognized text: '{button_text}'")
 
-# Example call of the function
-url = "https://www.eversports.de/s/poda-studio"
-link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
-print(link_text, reconstructed_urls)
+# # Example call of the function
+# url = "https://www.eversports.de/s/poda-studio"
+# link_text, reconstructed_urls = reconstruct_urls_and_extract_buttons(url)
+# print(link_text, reconstructed_urls)
